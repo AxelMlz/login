@@ -17,8 +17,8 @@ const newUserEntry = Joi.object({
     surName: Joi.string().max(50).required(),
     birthDate: {
       day: Joi.number().min(1).max(31).required(),
-      month: Joi.string().required().max(10),
-      year: Joi.number().min(1940).max(2022).required(),
+      month: Joi.number().required().min(1).max(12),
+      year: Joi.number().min(1930).max(2022).required(),
     },
   });
   
@@ -51,7 +51,7 @@ router.post("/register", newUserEntry, async (req, res) => {
     })
   } catch (err) {
     return res.status(400).json({
-      message: "this account is already exists",
+      message: "email adress unavailable, pick a new one",
     });
   }
 });
