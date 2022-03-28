@@ -47,7 +47,7 @@ router.post("/register", newUserEntry, async (req, res) => {
       date_of_birth: req.body.date_of_birth,
     });
     res.status(201).json({
-        message: `User with the email adress ${req.body.email} created`
+        message: `User with the email adress "${req.body.email}" created`
     })
   } catch (err) {
     return res.status(400).json({
