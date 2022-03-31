@@ -4,6 +4,8 @@ const port = 8001;
 app.use(express.json());
 const mongoose = require("mongoose");
 const Login = require("./models/identificationModel")
+require('dotenv').config({ path: "../../.env"})
+
 //Middleware activated by every request
 function debug( req, res, next){
     console.log("requête reçue");
@@ -12,7 +14,7 @@ function debug( req, res, next){
 
 mongoose
 .connect(
-    "mongodb+srv://axel_mlz:pMAywTH8XDi7JUf@database-backend.4wob9.mongodb.net/login?retryWrites=true&w=majority",
+    process.env.MONGO_URI,
     {
         useNewUrlParser: true,
     }
